@@ -1,0 +1,213 @@
+### Create Student 1
+POST http://localhost:8080/api/students
+Content-Type: application/json
+
+{
+  "name":"Sukanth",
+  "email":"sukanth@example.com"
+}
+
+### Create Student 2
+POST http://localhost:8080/api/students
+Content-Type: application/json
+
+{
+  "name":"Arun",
+  "email":"arun@example.com"
+}
+
+### Create Student 3
+POST http://localhost:8080/api/students
+Content-Type: application/json
+
+{
+  "name":"Priya",
+  "email":"priya@example.com"
+}
+
+### Create Student 4
+POST http://localhost:8080/api/students
+Content-Type: application/json
+
+{
+  "name":"Kavin",
+  "email":"kavin@example.com"
+}
+
+### Create Student 5
+POST http://localhost:8080/api/students
+Content-Type: application/json
+
+{
+  "name":"Divya",
+  "email":"divya@example.com"
+}
+
+### Get All Students
+GET http://localhost:8080/api/students
+
+### Get Student By ID
+GET http://localhost:8080/api/students/1
+
+### Update Student 1
+PUT http://localhost:8080/api/students/1
+Content-Type: application/json
+
+{
+  "name":"Sukanth M S",
+  "email":"sukanthms@example.com"
+}
+
+### Delete Student 5
+DELETE http://localhost:8080/api/students/5
+
+### Get All Students After Delete
+GET http://localhost:8080/api/students
+
+
+
+
+### Create Study Group 1
+POST http://localhost:8080/api/groups
+Content-Type: application/json
+
+{
+  "subject":"Java",
+  "maxMembers":3,
+  "creatorId":1
+}
+
+### Create Study Group 2
+POST http://localhost:8080/api/groups
+Content-Type: application/json
+
+{
+  "subject":"Python",
+  "maxMembers":4,
+  "creatorId":1
+}
+
+### Create Study Group 3
+POST http://localhost:8080/api/groups
+Content-Type: application/json
+
+{
+  "subject":"DBMS",
+  "maxMembers":5,
+  "creatorId":1
+}
+
+### Create Study Group 4
+POST http://localhost:8080/api/groups
+Content-Type: application/json
+
+{
+  "subject":"Data Structures",
+  "maxMembers":3,
+  "creatorId":1
+}
+
+### Create Study Group 5
+POST http://localhost:8080/api/groups
+Content-Type: application/json
+
+{
+  "subject":"Artificial Intelligence",
+  "maxMembers":6,
+  "creatorId":1
+}
+
+### Get All Groups
+GET http://localhost:8080/api/groups
+
+### Get Group By ID
+GET http://localhost:8080/api/groups/1
+
+### Update Group 3
+PUT http://localhost:8080/api/groups/3
+Content-Type: application/json
+
+{
+  "subject":"Advanced DBMS",
+  "maxMembers":6,
+  "creatorId":1
+}
+
+### Delete Group 5
+DELETE http://localhost:8080/api/groups/5
+
+### Get All Groups After Delete
+GET http://localhost:8080/api/groups
+
+
+
+
+
+### Join Student 1 to Group 1
+POST http://localhost:8080/api/memberships/join
+Content-Type: application/json
+
+{
+  "groupId":1,
+  "studentId":1
+}
+
+### Join Student 2 to Group 1
+POST http://localhost:8080/api/memberships/join
+Content-Type: application/json
+
+{
+  "groupId":1,
+  "studentId":2
+}
+
+### Join Student 3 to Group 1
+POST http://localhost:8080/api/memberships/join
+Content-Type: application/json
+
+{
+  "groupId":1,
+  "studentId":3
+}
+
+### Join Student 4 to Group 2
+POST http://localhost:8080/api/memberships/join
+Content-Type: application/json
+
+{
+  "groupId":2,
+  "studentId":4
+}
+
+### Get Members of Group 1
+GET http://localhost:8080/api/memberships/group/1
+
+### Get Groups of Student 1
+GET http://localhost:8080/api/memberships/student/1
+
+### Test Duplicate Join
+POST http://localhost:8080/api/memberships/join
+Content-Type: application/json
+
+{
+  "groupId":1,
+  "studentId":1
+}
+
+### Test GROUP_FULL
+POST http://localhost:8080/api/memberships/join
+Content-Type: application/json
+
+{
+  "groupId":1,
+  "studentId":4
+}
+
+### Student 3 Leaves Group 1
+DELETE http://localhost:8080/api/memberships/leave?groupId=1&studentId=3
+
+### Creator Removes Student 2
+DELETE http://localhost:8080/api/memberships/remove?groupId=1&studentId=2&creatorId=1
+
+### Get Group 1 Members After Delete
+GET http://localhost:8080/api/memberships/group/1

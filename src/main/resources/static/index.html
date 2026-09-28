@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>StudyBuddy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div>
+        <h1>StudyBuddy</h1>
+        <p>Student Study Group Formation Tool</p>
+    </div>
+</header>
+
+<nav>
+    <button class="nav-btn active" data-page="dashboard">Dashboard</button>
+    <button class="nav-btn" data-page="students">Students</button>
+    <button class="nav-btn" data-page="groups">Study Groups</button>
+    <button class="nav-btn" data-page="memberships">Memberships</button>
+</nav>
+
+<main>
+
+    <section id="dashboard" class="page active-page">
+
+        <h2>Dashboard</h2>
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <span>Total Students</span>
+                <h3 id="totalStudents">0</h3>
+            </div>
+
+            <div class="stat-card">
+                <span>Total Groups</span>
+                <h3 id="totalGroups">0</h3>
+            </div>
+
+            <div class="stat-card">
+                <span>Total Memberships</span>
+                <h3 id="totalMemberships">0</h3>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="section-title">
+                <h3>Available Study Groups</h3>
+            </div>
+
+            <div class="search-bar">
+                <span class="search-icon">⌕</span>
+
+                <input
+                        type="text"
+                        id="dashboardGroupSearch"
+                        placeholder="Search study groups..."
+                        oninput="filterTable('dashboardGroupSearch','dashboardGroups')">
+
+                <button
+                        class="clear-search"
+                        type="button"
+                        onclick="clearSearch('dashboardGroupSearch','dashboardGroups')">
+                    ×
+                </button>
+            </div>
+
+            <div id="dashboardGroups"></div>
+
+        </div>
+
+    </section>
+
+
+    <section id="students" class="page">
+
+        <h2>Students</h2>
+
+        <div class="card">
+
+            <div class="form-row">
+                <input type="text" id="studentName" placeholder="Student Name">
+                <input type="email" id="studentEmail" placeholder="Email">
+                <button onclick="addStudent()">Add Student</button>
+            </div>
+
+            <div class="search-bar">
+                <span class="search-icon">⌕</span>
+
+                <input
+                        type="text"
+                        id="studentSearch"
+                        placeholder="Search by ID, name or email"
+                        oninput="filterTable('studentSearch','studentList')">
+
+                <button
+                        class="clear-search"
+                        type="button"
+                        onclick="clearSearch('studentSearch','studentList')">
+                    ×
+                </button>
+            </div>
+
+            <div id="studentList"></div>
+
+        </div>
+
+    </section>
+
+
+    <section id="groups" class="page">
+
+        <h2>Study Groups</h2>
+
+        <div class="card">
+
+            <div class="form-row">
+                <input type="text" id="groupSubject" placeholder="Subject">
+                <input type="number" id="groupMaxMembers" placeholder="Max Members">
+                <input type="number" id="groupCreatorId" placeholder="Creator Student ID">
+                <button onclick="addGroup()">Create Group</button>
+            </div>
+
+            <div class="search-bar">
+                <span class="search-icon">⌕</span>
+
+                <input
+                        type="text"
+                        id="groupSearch"
+                        placeholder="Search by ID, subject, max members or creator"
+                        oninput="filterTable('groupSearch','groupList')">
+
+                <button
+                        class="clear-search"
+                        type="button"
+                        onclick="clearSearch('groupSearch','groupList')">
+                    ×
+                </button>
+            </div>
+
+            <div id="groupList"></div>
+
+        </div>
+
+    </section>
+
+
+    <section id="memberships" class="page">
+
+        <h2>Group Memberships</h2>
+
+        <div class="card">
+
+            <div class="form-row">
+                <input type="number" id="joinGroupId" placeholder="Group ID">
+                <input type="number" id="joinStudentId" placeholder="Student ID">
+                <button onclick="joinGroup()">Join Group</button>
+            </div>
+
+            <div class="form-row">
+                <input type="number" id="viewGroupId" placeholder="Group ID">
+                <button onclick="viewGroupMembers()">View Members</button>
+            </div>
+
+            <div id="membershipMessage"></div>
+
+            <div class="search-bar">
+                <span class="search-icon">⌕</span>
+
+                <input
+                        type="text"
+                        id="membershipSearch"
+                        placeholder="Search membership results"
+                        oninput="filterTable('membershipSearch','membershipList')">
+
+                <button
+                        class="clear-search"
+                        type="button"
+                        onclick="clearSearch('membershipSearch','membershipList')">
+                    ×
+                </button>
+            </div>
+
+            <div id="membershipList"></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
